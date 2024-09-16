@@ -41,4 +41,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    publishing{
+        publications{
+            create<MavenPublication>("maven") {
+                groupId = "com.github.eminesa" //
+                artifactId = "LibraryOnGit"
+                version = "1.0.0"
+                project.afterEvaluate {
+                    from(components["release"])
+                }
+            }
+        }
+    }
+
 }
